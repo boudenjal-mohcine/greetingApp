@@ -19,4 +19,8 @@ public class GreetingApplication {
         return String.format("Hello %s!", name);
     }
 
+    @GetMapping("/display_number")
+    public String display(@RequestParam(value = "number", defaultValue = "2") String number) {
+        return String.format("Number is %s!", number);
+    }
 }
