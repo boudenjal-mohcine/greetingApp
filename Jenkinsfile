@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        REMOTE_PATH = ' /home/mohcineboudenjal'
+        FILE_NAME = 'hello'
+    }
     stages {
         stage('Static Analysis') {
             steps {
@@ -28,7 +32,10 @@ pipeline {
         }
         stage('Publish Artifacts') {
             steps {
-                echo 'Save the assemblies generated from the compilation'
+                script {
+                    // Run commands on the production server
+                    sh "ssh production-server \"touch ${REMOTE_PATH}/${FILE_NAME}\""
+                }
             }
         }
     }
