@@ -5,7 +5,7 @@ pipeline {
         REMOTE_USER = 'mohcineboudenjal'
         REMOTE_HOST = 'production-server'
         REMOTE_PATH = '/home/mohcineboudenjal/smartassurance/smart-assurance-test'
-        JAR_NAME = 'greeting-app'  // Replace with your actual jar name
+        JAR_NAME = 'greetingapp'  // Replace with your actual jar name
     }
 
     stages {
@@ -23,6 +23,18 @@ pipeline {
                             echo 'ENTRYPOINT ["java","-jar","app.jar"]' >> ${REMOTE_PATH}/${JAR_NAME}/Dockerfile
                         '
                     """
+                }
+            }
+        }
+
+        stage('Build and Copy JAR') {
+            steps {
+                script {
+                    // Build the app locally
+                    sh "mvn clean install"
+
+                    // Copy the JAR to the remote path
+                    sh "scp -i ${JENKINS_SSH_KEY} -o StrictHostKeyChecking=no target/${JAR_NAME}-0.0.1-SNAPSHOT.jar ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/${JAR_NAME}"
                 }
             }
         }
