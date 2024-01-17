@@ -41,7 +41,7 @@ pipeline {
                 script {
                     // Run commands on the production server
                     
-                 sh "ssh -o StrictHostKeyChecking=no mohcineboudenjal@production-server touch ${REMOTE_PATH}/${FILE_NAME}"
+                 sh "ssh -o StrictHostKeyChecking=no production-server touch ${REMOTE_PATH}/${FILE_NAME}"
 
                 }
             }
