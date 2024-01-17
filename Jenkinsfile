@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         REMOTE_PATH = ' /home/mohcineboudenjal'
-        FILE_NAME = 'hello'
+        FILE_NAME = 'helloo'
     }
     stages {
         stage('Static Analysis') {
