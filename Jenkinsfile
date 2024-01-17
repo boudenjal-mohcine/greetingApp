@@ -34,7 +34,8 @@ pipeline {
             steps {
                 script {
                     // Run commands on the production server
-                    sh "ssh production-server \"touch ${REMOTE_PATH}/${FILE_NAME}\""
+                    sh "ssh production-server"
+                    sh "touch ${REMOTE_PATH}/${FILE_NAME}\"
                 }
             }
         }
