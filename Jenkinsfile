@@ -41,7 +41,7 @@ pipeline {
                 script {
                     // Run commands on the production server
                     
-                    sh "ssh mohcineboudenjal@production-server  touch ${REMOTE_PATH}/${FILE_NAME}"
+                    sh "ssh mohcineboudenjal@production-server"
                 }
             }
         }
