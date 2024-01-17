@@ -40,6 +40,7 @@ pipeline {
                 echo 'Testing SSH connection and touching file on the production server'
                 script {
                     // Run commands on the production server
+                    
                     sh "ssh production-server touch ${REMOTE_PATH}/${FILE_NAME}"
                 }
             }
