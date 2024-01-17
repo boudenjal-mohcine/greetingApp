@@ -5,7 +5,7 @@ pipeline {
         REMOTE_USER = 'mohcineboudenjal'
         REMOTE_HOST = 'production-server'
         REMOTE_PATH = '/home/mohcineboudenjal/smartassurance/smart-assurance-test'
-        JAR_NAME = 'greetingapp'  // Replace with your actual jar name
+        JAR_NAME = 'greeting'  // Replace with your actual jar name
     }
 
     stages {
