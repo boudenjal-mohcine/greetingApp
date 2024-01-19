@@ -5,7 +5,7 @@ pipeline {
         REMOTE_USER = 'mohcineboudenjal'
         REMOTE_HOST = 'production-server'
         REMOTE_PATH = '/home/mohcineboudenjal/smartassurance/smart-assurance-test'
-        JAR_NAME = 'greetingapp'  // Replace with your actual jar name
+        JAR_NAME = 'greeting'  // Replace with your actual jar name
     }
 
     stages {
@@ -34,7 +34,7 @@ pipeline {
                     sh "mvn clean install"
 
                     // Copy the JAR to the remote path
-                    sh "scp -i ${JENKINS_SSH_KEY} -o StrictHostKeyChecking=no target/${JAR_NAME}-0.0.1-SNAPSHOT.jar ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/${JAR_NAME}"
+                    sh "scp -i ${JENKINS_SSH_KEY} -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/java_project/target/${JAR_NAME}-0.0.1-SNAPSHOT.jar ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/${JAR_NAME}"
                 }
             }
         }
